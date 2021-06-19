@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskbackend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: flaskbackend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flaskbackend
+    spec:
+      containers:
+        - name: backend-container
+          image: flaskapp:1.12
+          ports:
+            - name: http
+              containerPort: 5000
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskbackend
+spec:
+  type: NodePort
+  selector:
+    app: flaskbackend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http
+...                            

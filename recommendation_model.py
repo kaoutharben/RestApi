@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import linear_kernel
 
 #fetch and return the data set
 def get_data():
-        df = pd.read_csv('/Users/kaoutharben/Documents/flask_app/netflix_titles.csv' , encoding='UTF-8')
+        df = pd.read_csv('./netflix_titles.csv' , encoding='UTF-8')
         return df
 
 #combine chosen features into a single string
